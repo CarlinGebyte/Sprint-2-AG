@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { Component } from "react";
 
-function Loading() {
-  return (
-    <div>Loading</div>
-  )
+export default class Loading extends Component {
+  render() {
+    return (
+      <div>
+        <div>
+          <img src="" alt="daily bits"></img>
+          <h1>Daily Bits</h1>
+        </div>
+      </div>
+    );
+  }
 }
-
-export default Loading
