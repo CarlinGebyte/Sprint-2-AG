@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { Loader } from "../styles/Loader";
 
 export default class Loading extends Component {
   render() {
     return (
-      <div>
+      <Loader>
         <div>
-          <img src="" alt="daily bits"></img>
-          <h1>Daily Bits</h1>
+          <img
+            src="https://github.com/CarlinGebyte/Sprint-2-AG/blob/main/src/assets/img/Color=white,%20Container=No.png?raw=true"
+            alt="daily bits"
+          ></img>
         </div>
-      </div>
+      </Loader>
     );
   }
 }
