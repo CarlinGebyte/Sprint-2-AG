@@ -125,7 +125,7 @@ function Register() {
         </Form>
         <Link to="/restore">¿Se te olvidó tu contraseña?</Link>
         <p>
-          ¿Ya tienes una cuenta? <Link to="/">Iniciar sesión</Link>
+          ¿Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link>
         </p>
       </ContainerItems>
     </Main>

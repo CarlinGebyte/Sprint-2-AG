@@ -32,10 +32,11 @@ function Login() {
       const userExist = data.find((user) => {
         return user.email === email;
       });
-      console.log(userExist);
       if (userExist) {
         if (userExist.password === password) {
           setLoged(true);
+          
+          localStorage.setItem("account", JSON.stringify(userExist));
           navigate("/");
         } else {
           alert("Contraseña incorrecta");

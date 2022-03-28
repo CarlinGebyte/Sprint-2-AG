@@ -1,7 +1,16 @@
-import React from 'react'
-import Navbar from './Navbar';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Statistics() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("user") !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   return (
     <div>
       <h3>Estadísticas</h3>
@@ -33,4 +42,4 @@ function Statistics() {
   );
 }
 
-export default Statistics
+export default Statistics;

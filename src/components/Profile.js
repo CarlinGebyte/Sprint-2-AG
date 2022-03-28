@@ -1,18 +1,21 @@
-import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function Profile() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleClose = () => {
     localStorage.setItem("user", false);
+    localStorage.setItem("account", "closed");
     navigate("/login");
-    if (location.state?.from) {
-      console.log("hola");
-    }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("user") !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   return (
     <main>
