@@ -14,14 +14,6 @@ export const Logo = styled.img`
   width: 100%;
 `;
 
-export const ContainerItems = styled.div`
-  width: 50%;
-  margin: 0 auto;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
 export const Title = styled.h1`
   font-family: Inter;
   margin: 20px auto;

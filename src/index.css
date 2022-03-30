@@ -3,18 +3,14 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  font-family: "Nunito", 'Inter';
   background-color: #16161a !important;
   color: #fffffe !important;
 }
 
 #root {
-  height: 100vh;
+  height: 100%;
   width: 50%;
   margin: 0 auto;
 }

@@ -6,7 +6,6 @@ import { url } from "../helpers/url";
 import {
   ButtonGmail,
   ButtonLogin,
-  ContainerItems,
   Line,
   Logo,
   LogoContainer,
@@ -35,9 +34,14 @@ function Login() {
       if (userExist) {
         if (userExist.password === password) {
           setLoged(true);
-          
           localStorage.setItem("account", JSON.stringify(userExist));
-          navigate("/");
+          if (userExist.type === "admin") {
+            localStorage.setItem("admin", true);
+            navigate("/Sprint-2-AG/admin");
+          } else {
+            localStorage.setItem("admin", false);
+            navigate("/Sprint-2-AG/");
+          }
         } else {
           alert("Contraseña incorrecta");
           setLoged(false);
@@ -57,7 +61,7 @@ function Login() {
           alt="logo"
         ></Logo>
       </LogoContainer>
-      <ContainerItems>
+      <div>
         <Title>Iniciar Sesión</Title>
         <ButtonGmail variant="danger">
           <i className="fa-brands fa-google"></i>
@@ -93,7 +97,7 @@ function Login() {
         <p>
           ¿Aún no tienes una cuenta? <Link to="/register">Inscribirme</Link>
         </p>
-      </ContainerItems>
+      </div>
     </Main>
   );
 }

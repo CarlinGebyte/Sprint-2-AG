@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Admin from "../components/Admin";
 import Home from "../components/Home";
 import Loading from "../components/Loading";
 import Login from "../components/Login";
@@ -33,18 +34,28 @@ function AppRoutes() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/restore" element={<RestorePass />}></Route>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/statistics" element={<Statistics />} />
-          <Route path="/js" element={<Questions category="js" />} />
-          <Route path="/css" element={<Questions category="css" />} />
-          <Route path="/figma" element={<Questions category="figma" />} />
-          <Route path="/ux" element={<Questions category="ux" />} />
-          <Route path="/html" element={<Questions category="html" />} />
-          <Route path="/*" element={<Navigate to="/" />}></Route>
+          <Route path="/Sprint-2-AG/" element={<Home />} />
+          <Route path="/Sprint-2-AG/login" element={<Login />}></Route>
+          <Route path="/Sprint-2-AG/register" element={<Register />}></Route>
+          <Route path="/Sprint-2-AG/restore" element={<RestorePass />}></Route>
+          <Route path="/Sprint-2-AG/profile" element={<Profile />} />
+          <Route path="/Sprint-2-AG/statistics" element={<Statistics />} />
+          <Route path="/Sprint-2-AG/js" element={<Questions category="js" />} />
+          <Route
+            path="/Sprint-2-AG/css"
+            element={<Questions category="css" />}
+          />
+          <Route
+            path="/Sprint-2-AG/figma"
+            element={<Questions category="figma" />}
+          />
+          <Route path="/Sprint-2-AG/ux" element={<Questions category="ux" />} />
+          <Route
+            path="/Sprint-2-AG/html"
+            element={<Questions category="html" />}
+          />
+          <Route path="/Sprint-2-AG/admin" element={<Admin />} />
+          <Route path="/*" element={<Navigate to="/Sprint-2-AG/" />}></Route>
         </Routes>
       </BrowserRouter>
     );

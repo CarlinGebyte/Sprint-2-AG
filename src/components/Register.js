@@ -23,7 +23,6 @@ function Register() {
     image: "",
     email: "",
     statistics: {
-      time: 0,
       total: 0,
       correct: 0,
       incorrect: 0,
@@ -68,7 +67,7 @@ function Register() {
           alt="logo"
         ></Logo>
       </LogoContainer>
-      <ContainerItems>
+      <div>
         <Title>Registro</Title>
         <ButtonGmail variant="danger">
           <i className="fa-brands fa-google"></i>
@@ -123,11 +122,11 @@ function Register() {
             Crear cuenta
           </ButtonLogin>
         </Form>
-        <Link to="/restore">¿Se te olvidó tu contraseña?</Link>
+        <Link to="/Sprint-2-AG/restore">¿Se te olvidó tu contraseña?</Link>
         <p>
-          ¿Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link>
+          ¿Ya tienes una cuenta? <Link to="/Sprint-2-AG/login">Iniciar sesión</Link>
         </p>
-      </ContainerItems>
+      </div>
     </Main>
   );
 }

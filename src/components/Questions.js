@@ -1,9 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form, FormCheck, FormGroup, FormLabel } from "react-bootstrap";
+import { Button, Form, FormCheck, FormLabel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { questions } from "../assets/data/Questions";
 import { url } from "../helpers/url";
+import {
+  Correct,
+  Incorrect,
+  QuestionContainer,
+  OptionContainer,
+} from "../styles/QuestionsStyles";
 
 function Questions({ category }) {
   const navigate = useNavigate();
@@ -11,7 +17,7 @@ function Questions({ category }) {
 
   useEffect(() => {
     if (localStorage.getItem("user") !== "true") {
-      navigate("/login");
+      navigate("/Sprint-2-AG/login");
     }
   }, [navigate]);
 
@@ -31,23 +37,45 @@ function Questions({ category }) {
     setQuestion(questions[currentQuestion]);
   }, [currentQuestion]);
 
+  useEffect(() => {
+    if (answerSelect === "") {
+      document.getElementById("check").setAttribute("disabled", "disabled");
+    }
+    console.log(answerSelect);
+  }, [answerSelect]);
+
   const handleChange = (e) => {
     setAnswerSelect(e.target.value);
+    document.getElementById("check").removeAttribute("disabled");
+  };
+
+  const checkAnswer = () => {
+    if (answerSelect === question.correct) {
+      setScore(score + 1);
+      setAnswerSelect("");
+      document.getElementById("correct").style.display = "flex";
+    } else {
+      setAnswerSelect("");
+      document.getElementById("incorrect").style.display = "flex";
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (answerSelect === question.correct) {
-      setScore(score + 1);
-    }
+    e.target.reset();
+
+    document.getElementById("correct").style.display = "none";
+    document.getElementById("incorrect").style.display = "none";
+
     if (currentQuestion + 1 < allQuestionsLenght) {
       setCurrentQuestion(currentQuestion + 1);
     }
-    if (currentQuestion + 1 === allQuestionsLenght) {
+    if (currentQuestion + 1 >= allQuestionsLenght) {
       let account = JSON.parse(localStorage.getItem("account"));
-      console.log(account);
-      console.log(category);
-      account.category = score;
+      account[category] = score;
+      account.statistics.total += allQuestionsLenght;
+      account.statistics.correct += score;
+      account.statistics.incorrect += allQuestionsLenght - score;
       console.log(account);
 
       const id = account.id;
@@ -62,17 +90,15 @@ function Questions({ category }) {
         });
       setCurrentQuestion(0);
       setScore(0);
-      navigate("/");
+      navigate("/Sprint-2-AG/");
     }
-    e.target.reset();
-    setAnswerSelect("");
   };
 
   return (
-    <div>
+    <QuestionContainer>
       <h5>{question.question}</h5>
       <Form onSubmit={handleSubmit}>
-        <FormGroup>
+        <OptionContainer>
           <FormLabel htmlFor="a">{question.a}</FormLabel>
           <FormCheck
             id="a"
@@ -81,8 +107,8 @@ function Questions({ category }) {
             type="radio"
             onChange={handleChange}
           ></FormCheck>
-        </FormGroup>
-        <FormGroup>
+        </OptionContainer>
+        <OptionContainer>
           <FormLabel htmlFor="b">{question.b}</FormLabel>
           <FormCheck
             id="b"
@@ -91,8 +117,8 @@ function Questions({ category }) {
             type="radio"
             onChange={handleChange}
           ></FormCheck>
-        </FormGroup>
-        <FormGroup>
+        </OptionContainer>
+        <OptionContainer>
           <FormLabel htmlFor="c">{question.c}</FormLabel>
           <FormCheck
             id="c"
@@ -101,10 +127,21 @@ function Questions({ category }) {
             type="radio"
             onChange={handleChange}
           ></FormCheck>
-        </FormGroup>
-        <Button type="submit">Comprobar</Button>
+        </OptionContainer>
+        <Button id="check" onClick={checkAnswer}>
+          Comprobar
+        </Button>
+        <Correct id="correct">
+          <h6>¡Buen Trabajo!</h6>
+          <Button type="submit">Continuar</Button>
+        </Correct>
+        <Incorrect id="incorrect">
+          <h6>La respuesta correcta es:</h6>
+          <p>{question[question.correct]}</p>
+          <Button type="submit">Continuar</Button>
+        </Incorrect>
       </Form>
-    </div>
+    </QuestionContainer>
   );
 }
 
