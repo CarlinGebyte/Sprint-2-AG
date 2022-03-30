@@ -12,4 +12,29 @@ export const Footer = styled.footer`
   @media (max-width: 768px) {
     width: 100%;
   }
+  a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fffffe;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: all 0.3s ease-in-out;
+    svg {
+      fill: #fffffe;
+    }
+
+    &:hover {
+      color: #ccc;
+      svg {
+        fill: #ccc;
+      }
+    }
+    &:active, &:focus {
+      color: #2CB67D;
+      svg {
+        fill: #2CB67D;
+      }
+    }
+  }
 `;

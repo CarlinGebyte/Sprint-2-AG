@@ -5,6 +5,9 @@ export const ContainerHome = styled.main`
   width: 100%;
   height: 100%;
   padding: 5%;
+  p {
+    margin: 0 auto 10px auto;
+  }
 `;
 
 export const HTMLContainer = styled.div`
@@ -30,7 +33,10 @@ export const PHome = styled.p`
   font-weight: bold;
   color: #fff;
   text-align: center;
-  margin: 0 auto 5% auto;
+  margin: 0 auto 5% auto !important;
+  @media (max-width: 768px) {
+    margin: 0 auto 3% auto !important;
+  }
 `;
 
 export const JsContainer = styled.div`
