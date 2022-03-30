@@ -93,9 +93,10 @@ function Login() {
             Iniciar Sesión
           </ButtonLogin>
         </Form>
-        <Link to="/restore">¿Se te olvidó tu contraseña?</Link>
+        <Link to="/Sprint-2-AG/restore">¿Se te olvidó tu contraseña?</Link>
         <p>
-          ¿Aún no tienes una cuenta? <Link to="/register">Inscribirme</Link>
+          ¿Aún no tienes una cuenta?{" "}
+          <Link to="/Sprint-2-AG/register">Inscribirme</Link>
         </p>
       </div>
     </Main>
